@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.google.gson.Gson;
@@ -22,6 +24,8 @@ import com.newt.listener.OnLoadMoreListener;
 import com.newt.utils.Constant;
 import com.newt.utils.HttpUtil;
 import com.newt.utils.ToastUtil;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -91,6 +95,9 @@ public class PageTop extends BaseIndexPage {
                 dataFromNet();
             }
         });
+
+
+        //新闻项被点击
         topRecyclerViewAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void itemClick(View v, int tag) {
@@ -98,6 +105,10 @@ public class PageTop extends BaseIndexPage {
                 String url = (String) view.getTag();
                 Intent intent = new Intent(context, NewsDetailActivity.class);
                 intent.putExtra("url", url);
+                TextView tvNewTitle = (TextView) v.findViewById(R.id.tv_new_title);
+                TextView ivImageUrl = (TextView) v.findViewById(R.id.tv_image_url);
+                intent.putExtra("title", tvNewTitle.getText());
+                intent.putExtra("image", ivImageUrl.getText());
                 context.startActivity(intent);
             }
         });

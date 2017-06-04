@@ -23,6 +23,8 @@ import com.newt.listener.OnLoadMoreListener;
 import com.newt.ui.view.Banner;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +42,8 @@ public class TopRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private static final int TYPE_BANNER = 0;
     private static final int TYPE_NEWS = 1;
     private static final int TYPE_LOADMORE = 2;
+    private List<News.ResultBean.DataBean> data;
+    private News.ResultBean.DataBean dataBean;
 
 
     public News getNews() {
@@ -60,11 +64,13 @@ public class TopRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         ImageView imageView;
         TextView textView;
         View url;
+        TextView tvImageUrl;
 
         public ViewHoder(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.iv_list_item);
             textView = (TextView) itemView.findViewById(R.id.tv_new_title);
+            tvImageUrl = (TextView) itemView.findViewById(R.id.tv_image_url);
             url = itemView.findViewById(R.id.url);
         }
     }
@@ -132,16 +138,18 @@ public class TopRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder.getItemViewType() == TYPE_NEWS) {
-            List<News.ResultBean.DataBean> data = news.getResult().getData();
-            News.ResultBean.DataBean dataBean = data.get(position);
+            data = news.getResult().getData();
+            dataBean = data.get(position);
             ViewHoder viewHolder = (ViewHoder) holder;
             ImageView imageView = viewHolder.imageView;
             TextView textView = viewHolder.textView;
+            TextView tvImageUrl = viewHolder.tvImageUrl;
             String title = dataBean.getTitle();
             String thumbnail_pic_s = dataBean.getThumbnail_pic_s();
             Glide.with(context).load(thumbnail_pic_s).into(imageView);
             textView.setText(title);
             viewHolder.url.setTag(data.get(position).getUrl());
+            tvImageUrl.setText(thumbnail_pic_s);
             holder.itemView.setTag(position);
         } else if (holder.getItemViewType() == TYPE_LOADMORE) {
             onLoadMoreListener.loadMore();
