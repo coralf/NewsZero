@@ -3,14 +3,13 @@
 
 
 ### 下面是首页效果图 ###
-![](http://i.imgur.com/6Wtdb0a.png)
+![](http://i.imgur.com/qIq1FG6.png)
+
 
 ### 新闻页面其他页 ###
-![](http://i.imgur.com/uLm1I6t.png)
-
+![](http://i.imgur.com/x8KEW1k.png)
 
 ### 用shareSDK做了一个分享功能 ###
-![](http://i.imgur.com/OunTlH7.png)
+![](http://i.imgur.com/CMyOF4J.png)
 
-
-### 大家喜欢的话，可以拿去随便改，或者完善 ###
+### 大家喜欢的话，可以拿去随便改，完善 ###
