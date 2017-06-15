@@ -1,15 +1,18 @@
 # NewsZero
 一个关于阅读,分享新闻的App
 
+新闻数据我是调用聚合数据的免费接口，附上官方网站：https://www.juhe.cn/ 
 
 ### 下面是首页效果图 ###
-![](http://i.imgur.com/qIq1FG6.png)
 
+![](http://i.imgur.com/L517YcH.png)
 
 ### 新闻页面其他页 ###
-![](http://i.imgur.com/x8KEW1k.png)
+
+![](http://i.imgur.com/vjICLCX.png)
 
 ### 用shareSDK做了一个分享功能 ###
-![](http://i.imgur.com/CMyOF4J.png)
+
+![](http://i.imgur.com/dA6svz3.png)
 
 ### 大家喜欢的话，可以拿去随便改，完善 ###
