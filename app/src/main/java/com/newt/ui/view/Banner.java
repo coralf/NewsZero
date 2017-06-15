@@ -81,10 +81,17 @@ public class Banner extends FrameLayout {
         this.context = context;
     }
 
-    public Banner(@NonNull Context context, List<String> urls) {
+   /* public Banner(@NonNull Context context, List<String> urls) {
         super(context);
         this.context = context;
         this.urls = urls;
+        initView();
+    }*/
+
+    public Banner(@NonNull Context context, List<View> viewItems) {
+        super(context);
+        this.context = context;
+        this.viewItems=viewItems;
         initView();
     }
 
@@ -110,7 +117,7 @@ public class Banner extends FrameLayout {
 
             @Override
             public void onPageSelected(int position) {
-                int size = urls.size();
+                int size = viewItems.size();
                 int index = viewPager.getCurrentItem() % size;
                 for (int i = 0; i < size; i++) {
                     pointer.getChildAt(i).setBackground(generatePinterDrawable("#CC0000"));
@@ -158,12 +165,12 @@ public class Banner extends FrameLayout {
         viewPager = new ViewPager(context);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         viewPager.setLayoutParams(layoutParams);
-        for (int i = 0; i < urls.size(); i++) {
+      /*  for (int i = 0; i < urls.size(); i++) {
             ImageView imageView = new ImageView(context);
             RequestBuilder<Drawable> drawables = Glide.with(context).load(urls.get(i));
             drawables.into(imageView);
             viewItems.add(imageView);
-        }
+        }*/
         viewPager.setAdapter(new ViewPagerAdapter());
         viewPager.setCurrentItem(currentPosition);
         this.addView(viewPager);
@@ -181,7 +188,7 @@ public class Banner extends FrameLayout {
         pointer.setBackgroundColor(Color.parseColor(pointerBgApacity));
         pointer.setGravity(Gravity.CENTER);
         pointer.setOrientation(LinearLayout.HORIZONTAL);
-        int size = urls.size();
+        int size = viewItems.size();
         GradientDrawable gradientDrawable = generatePinterDrawable(POINTER_COLOR_DEF);
         for (int i = 0; i < size; i++) {
             View view = new View(context);
@@ -191,7 +198,7 @@ public class Banner extends FrameLayout {
             view.setLayoutParams(layoutParams);
             pointer.addView(view);
         }
-        int index = currentPosition % (urls.size());
+        int index = currentPosition % (viewItems.size());
         View view = pointer.getChildAt(index);
         view.setBackground(generatePinterDrawable(pointerCurrentColor));
         this.addView(pointer);
@@ -230,7 +237,7 @@ public class Banner extends FrameLayout {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             currentPosition = position;
-            int index = position % urls.size();
+            int index = position % viewItems.size();
             View view = viewItems.get(index);
             container.addView(view);
             return view;

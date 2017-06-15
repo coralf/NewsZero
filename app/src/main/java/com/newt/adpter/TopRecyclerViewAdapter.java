@@ -112,13 +112,23 @@ public class TopRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         View view = null;
         RecyclerView.ViewHolder viewHoder = null;
         if (viewType == TYPE_BANNER) {
-            ArrayList<String> urls = new ArrayList<>();
+            /*ArrayList<String> urls = new ArrayList<>();
             List<News.ResultBean.DataBean> data = news.getResult().getData();
             urls.add(data.get(data.size() - 1).getThumbnail_pic_s03() != null ? data.get(data.size() - 1).getThumbnail_pic_s03() : data.get(data.size() - 1).getThumbnail_pic_s());
             urls.add(data.get(data.size() - 2).getThumbnail_pic_s03() != null ? data.get(data.size() - 2).getThumbnail_pic_s03() : data.get(data.size() - 2).getThumbnail_pic_s());
             urls.add(data.get(data.size() - 3).getThumbnail_pic_s03() != null ? data.get(data.size() - 3).getThumbnail_pic_s03() : data.get(data.size() - 3).getThumbnail_pic_s());
             urls.add(data.get(data.size() - 4).getThumbnail_pic_s03() != null ? data.get(data.size() - 4).getThumbnail_pic_s03() : data.get(data.size() - 4).getThumbnail_pic_s());
-            view = new Banner(context, urls);
+            */
+
+            List<View> views = new ArrayList<>();
+            int[] imgs = {R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d};
+            for (int i = 0; i < 4; i++) {
+                View v = new View(context);
+                v.setBackgroundResource(imgs[i]);
+                views.add(v);
+            }
+            view= new Banner(context,views);
+            //view = new Banner(context, urls);
             view.setLayoutParams(new Banner.LayoutParams(Banner.LayoutParams.MATCH_PARENT, 500));
             viewHoder = new BannerViewHolder(view);
         } else if (viewType == TYPE_NEWS) {
